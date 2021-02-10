@@ -1,8 +1,8 @@
 <template>
     <app-layout>
-        <div v-if="cashflows[0]">
-            <div class="flex w-full">
-                <div class="w-1/2">
+        <div class="xl:px-0 px-12 w-full h-auto" v-if="cashflows[0]">
+            <div class="flex flex-wrap">
+                <div class="md:w-1/2 w-full md:mb-0 mb-8">
                     <div class="flex mb-8">
                         <h1
                             class="flex text-7xl font-bold text-gray-700 items-center"
@@ -49,9 +49,9 @@
                     </div>
                 </div>
 
-                <div class="w-1/2">
+                <div class="md:w-1/2 w-full">
                     <h1
-                        class="flex text-7xl font-bold text-white justify-end items-center mb-8"
+                        class="flex text-7xl font-bold text-white md:justify-end justify-center items-center mb-8"
                     >
                         OVERVIEW
                     </h1>
@@ -97,7 +97,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="grid grid-cols-3 gap-3 mt-12">
+            <div class="grid md:grid-cols-3 grid-cols-1 gap-3 mt-12">
                 <a
                     href="#"
                     class="flex justify-between bg-gray-700 py-3 px-5 rounded-lg"

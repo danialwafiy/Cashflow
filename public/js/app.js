@@ -3013,7 +3013,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      isShowNavbar: true
+    };
+  },
   methods: {
     switchToTeam: function switchToTeam(team) {
       this.$inertia.put(route("current-team.update"), {
@@ -34552,106 +34566,121 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("nav", { staticClass: "py-4 shadow-md" }, [
-    _c("div", { staticClass: "w-full px-12 mx-auto" }, [
-      _c(
-        "div",
-        { staticClass: "flex justify-between items-center h-14 text-sm" },
-        [
+  return _c("div", [
+    _c(
+      "a",
+      {
+        staticClass: "text-center md:mb-0 mb-2 md:hidden block py-3",
+        attrs: { href: "#" },
+        on: {
+          click: function($event) {
+            _vm.isShowNavbar = !_vm.isShowNavbar
+          }
+        }
+      },
+      [_c("i", { staticClass: "lni lni-text-align-left text-2xl text-white" })]
+    ),
+    _vm._v(" "),
+    _c(
+      "nav",
+      {
+        staticClass: "md:py-4 py-16 shadow-md",
+        class: _vm.isShowNavbar ? "block" : "hidden"
+      },
+      [
+        _c("div", { staticClass: "w-full px-12 mx-auto" }, [
           _c(
             "div",
-            { staticClass: "flex justify-center w-full" },
+            { staticClass: "flex justify-between items-center h-14 text-sm" },
             [
               _c(
-                "inertia-link",
+                "div",
                 {
                   staticClass:
-                    "bg-gray-700 px-5 py-2 text-gray-100 rounded-full mx-2",
-                  class:
-                    _vm.route().current() == "cashflow.index"
-                      ? "bg-white text-gray-700"
-                      : "",
-                  attrs: { href: _vm.route("cashflow.index") }
+                    "flex md:flex-row flex-col flex-wrap justify-center w-full"
                 },
                 [
-                  _c("i", { staticClass: "lni lni-home" }),
-                  _vm._v("  CASHFLOW\n                ")
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "inertia-link",
-                {
-                  staticClass:
-                    "bg-gray-700 px-5 py-2 text-gray-100 rounded-full mx-2",
-                  class:
-                    _vm.route().current() == "cashflow.create"
-                      ? "bg-white text-gray-700"
-                      : "",
-                  attrs: { href: _vm.route("cashflow.create") }
-                },
-                [
-                  _c("i", { staticClass: "lni lni-pencil-alt" }),
-                  _vm._v("  NEW ENTRY\n                ")
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "inertia-link",
-                {
-                  staticClass:
-                    "bg-gray-700 px-5 py-2 text-gray-100 rounded-full mx-2",
-                  class:
-                    _vm.route().current() == "commitment.index"
-                      ? "bg-white text-gray-700"
-                      : "",
-                  attrs: { href: _vm.route("commitment.index") }
-                },
-                [
-                  _c("i", { staticClass: "lni lni-briefcase" }),
-                  _vm._v("  COMMITMENTS\n                ")
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass:
-                    "bg-gray-700 px-5 py-2 text-gray-100 rounded-full mx-2",
-                  attrs: { href: "#" },
-                  on: {
-                    click: function($event) {
-                      return _vm.logout()
-                    }
-                  }
-                },
-                [
-                  _c("i", { staticClass: "lni lni-exit" }),
-                  _vm._v("  LOGOUT\n                ")
-                ]
+                  _c(
+                    "inertia-link",
+                    {
+                      staticClass:
+                        "bg-gray-700 px-5 py-2 text-gray-100 rounded-full mx-2 md:mb-0 mb-2",
+                      class:
+                        _vm.route().current() == "cashflow.index"
+                          ? "bg-white text-gray-700"
+                          : "",
+                      attrs: { href: _vm.route("cashflow.index") }
+                    },
+                    [
+                      _c("i", { staticClass: "lni lni-home" }),
+                      _vm._v("  CASHFLOW\n                    ")
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "inertia-link",
+                    {
+                      staticClass:
+                        "bg-gray-700 px-5 py-2 text-gray-100 rounded-full mx-2 md:mb-0 mb-2",
+                      class:
+                        _vm.route().current() == "cashflow.create"
+                          ? "bg-white text-gray-700"
+                          : "",
+                      attrs: { href: _vm.route("cashflow.create") }
+                    },
+                    [
+                      _c("i", { staticClass: "lni lni-pencil-alt" }),
+                      _vm._v(
+                        "  NEW\n                        ENTRY\n                    "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "inertia-link",
+                    {
+                      staticClass:
+                        "bg-gray-700 px-5 py-2 text-gray-100 rounded-full mx-2 md:mb-0 mb-2",
+                      class:
+                        _vm.route().current() == "commitment.index"
+                          ? "bg-white text-gray-700"
+                          : "",
+                      attrs: { href: _vm.route("commitment.index") }
+                    },
+                    [
+                      _c("i", { staticClass: "lni lni-briefcase" }),
+                      _vm._v("  COMMITMENTS\n                    ")
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "bg-gray-700 px-5 py-2 text-gray-100 rounded-full mx-2",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          return _vm.logout()
+                        }
+                      }
+                    },
+                    [
+                      _c("i", { staticClass: "lni lni-exit" }),
+                      _vm._v("  LOGOUT\n                    ")
+                    ]
+                  )
+                ],
+                1
               )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _vm._m(0)
-        ]
-      )
-    ])
+            ]
+          )
+        ])
+      ]
+    )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", {}, [
-      _c("a", { attrs: { href: "#" } }, [
-        _c("i", { staticClass: "lni lni-text-align-left text-2xl text-white" })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -36574,9 +36603,9 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("app-layout", [
     _vm.cashflows[0]
-      ? _c("div", [
-          _c("div", { staticClass: "flex w-full" }, [
-            _c("div", { staticClass: "w-1/2" }, [
+      ? _c("div", { staticClass: "xl:px-0 px-12 w-full h-auto" }, [
+          _c("div", { staticClass: "flex flex-wrap" }, [
+            _c("div", { staticClass: "md:w-1/2 w-full md:mb-0 mb-8" }, [
               _c("div", { staticClass: "flex mb-8" }, [
                 _c(
                   "h1",
@@ -36660,12 +36689,12 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "w-1/2" }, [
+            _c("div", { staticClass: "md:w-1/2 w-full" }, [
               _c(
                 "h1",
                 {
                   staticClass:
-                    "flex text-7xl font-bold text-white justify-end items-center mb-8"
+                    "flex text-7xl font-bold text-white md:justify-end justify-center items-center mb-8"
                 },
                 [_vm._v("\n                    OVERVIEW\n                ")]
               ),
@@ -36766,7 +36795,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "grid grid-cols-3 gap-3 mt-12" },
+            { staticClass: "grid md:grid-cols-3 grid-cols-1 gap-3 mt-12" },
             _vm._l(_vm.cashflows, function(cashflow) {
               return _c(
                 "a",
