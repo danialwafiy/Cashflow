@@ -1,0 +1,11 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.btn-default {
+    @apply bg-gray-700 px-5 py-2 text-gray-100 rounded-full mx-2
+}
+
+#nprogress .bar {
+  height: 3px !important; 
+}
