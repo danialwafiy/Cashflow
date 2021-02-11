@@ -34585,7 +34585,7 @@ var render = function() {
       "nav",
       {
         staticClass: "md:py-4 py-16 shadow-md",
-        class: _vm.isShowNavbar ? "block" : "hidden"
+        class: _vm.isShowNavbar ? "block" : "md:block hidden"
       },
       [
         _c("div", { staticClass: "w-full px-12 mx-auto" }, [

@@ -9,7 +9,7 @@
         </a>
         <nav
             class="md:py-4 py-16 shadow-md"
-            :class="isShowNavbar ? 'block' : 'hidden'"
+            :class="isShowNavbar ? 'block' : 'md:block hidden'"
         >
             <!-- Primary Navigation Menu -->
             <div class="w-full px-12 mx-auto">
