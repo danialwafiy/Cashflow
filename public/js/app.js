@@ -4544,6 +4544,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     commitments: {},
@@ -4567,6 +4568,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
 /* harmony import */ var _Pages_Commitment_Card__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Pages/Commitment/Card */ "./resources/js/Pages/Commitment/Card.vue");
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4665,21 +4672,34 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    submit: function submit() {
+    deleteCommitment: function deleteCommitment(id, index) {
       var _this = this;
+
+      axios["delete"]("/commitment/" + id).then(function (res) {
+        toast.fire({
+          icon: "error",
+          title: "Commitment deleted.",
+          timer: 3000
+        });
+
+        _this.commitments.splice(index, 1);
+      });
+    },
+    submit: function submit() {
+      var _this2 = this;
 
       this.$v.$touch();
 
       if (!this.$v.$invalid) {
         axios.post("/commitment", this.form).then(function (res) {
-          _this.commitments.push(res.data.commitment);
+          _this2.commitments.push(res.data.commitment);
 
           toast.fire({
             icon: "success",
             title: "Commitment created.",
             timer: 3000
           });
-          _this.form = {
+          _this2.form = {
             details: "",
             amount: ""
           };
@@ -37288,20 +37308,30 @@ var render = function() {
       _c(
         "ul",
         { staticClass: "text-lg mt-4" },
-        _vm._l(_vm.commitments, function(commitment) {
+        _vm._l(_vm.commitments, function(commitment, index) {
           return _c("li", { key: commitment.id, staticClass: "mb-1" }, [
-            _c("div", { staticClass: "flex justify-between" }, [
-              _c("div", [
-                _c("i", { staticClass: "lni lni-pointer-right" }),
-                _vm._v(
-                  " \n                    " +
-                    _vm._s(commitment.details) +
-                    "\n                "
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("RM" + _vm._s(commitment.amount))])
-            ])
+            _c(
+              "div",
+              { staticClass: "flex justify-between" },
+              [
+                _c("div", [
+                  _c("i", { staticClass: "lni lni-pointer-right" }),
+                  _vm._v(
+                    " \n                    " +
+                      _vm._s(commitment.details) +
+                      "\n                "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", [_vm._v("RM" + _vm._s(commitment.amount))]),
+                _vm._v(" "),
+                _vm._t("default", null, {
+                  commitmentID: commitment.id,
+                  index: index
+                })
+              ],
+              2
+            )
           ])
         }),
         0
@@ -37358,7 +37388,29 @@ var render = function() {
           attrs: {
             commitments: _vm.commitments,
             totalCommitment: _vm.totalCommitment
-          }
+          },
+          scopedSlots: _vm._u([
+            {
+              key: "default",
+              fn: function(ref) {
+                var commitmentID = ref.commitmentID
+                var index = ref.index
+                return [
+                  _c(
+                    "button",
+                    {
+                      on: {
+                        click: function($event) {
+                          return _vm.deleteCommitment(commitmentID, index)
+                        }
+                      }
+                    },
+                    [_c("i", { staticClass: "lni lni-trash text-2xl mt-5" })]
+                  )
+                ]
+              }
+            }
+          ])
         })
       ],
       1

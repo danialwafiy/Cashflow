@@ -7,7 +7,13 @@
             <Commitment
                 :commitments="commitments"
                 :totalCommitment="totalCommitment"
-            />
+            >
+                <template #default="{commitmentID,index}">
+                    <button @click="deleteCommitment(commitmentID, index)">
+                        <i class="lni lni-trash text-2xl mt-5"></i>
+                    </button>
+                </template>
+            </Commitment>
         </div>
         <div class="w-full mt-12">
             <form @submit.prevent="submit()">
@@ -88,6 +94,16 @@ export default {
         }
     },
     methods: {
+        deleteCommitment(id, index) {
+            axios.delete("/commitment/" + id).then(res => {
+                toast.fire({
+                    icon: "error",
+                    title: "Commitment deleted.",
+                    timer: 3000
+                });
+                this.commitments.splice(index, 1);
+            });
+        },
         submit() {
             this.$v.$touch();
             if (!this.$v.$invalid) {

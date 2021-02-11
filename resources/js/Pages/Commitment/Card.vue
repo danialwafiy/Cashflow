@@ -8,7 +8,7 @@
         <ul class="text-lg mt-4">
             <li
                 class="mb-1"
-                v-for="commitment in commitments"
+                v-for="(commitment, index) in commitments"
                 :key="commitment.id"
             >
                 <div class="flex justify-between">
@@ -17,6 +17,7 @@
                         {{ commitment.details }}
                     </div>
                     <div>RM{{ commitment.amount }}</div>
+                    <slot :commitmentID="commitment.id" :index="index"></slot>
                 </div>
             </li>
         </ul>

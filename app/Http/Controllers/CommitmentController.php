@@ -91,8 +91,15 @@ class CommitmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Commitment $commitment)
     {
-        //
+        try {
+            $commitment->delete();
+            return response()
+                ->json(['message' => 'Commitment deleted!'], 200);
+        } catch (e) {
+            return response()
+                ->json(['message' => 'Something went wrong' . e], 500);
+        }
     }
 }
